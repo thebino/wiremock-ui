@@ -1,0 +1,30 @@
+[workspace]
+members = [
+    "api",
+    "ui",
+    "wiremock"
+]
+
+[workspace.package]
+authors = ["Stürmer, Benjamin <benjamin@stuermer.pro>"]
+description = "A wiremock Ui application to change scenario states on the fly."
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+license = "AGPL-3.0"
+
+[workspace.dependencies]
+# local crates
+api = { path = "./api" }
+wiremock = { path = "./wiremock" }
+
+# 3rd party
+serde = "1.0.183"
+serde_json = "1.0.66"
+eframe = "0.23.0"
+hyper = { version = "0.14", features = ["full"] }
+httpmock = "0.6"
+tokio = { version = "1", features = ["full"] }
+rfd = "0.12.0"
+reqwest = "0.11.21"
+stubr = "0.6.2"

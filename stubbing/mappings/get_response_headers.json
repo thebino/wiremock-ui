@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/whatever"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/plain",
+      "Set-Cookie": ["session_id=91837492837", "split_test_group=B"],
+      "Cache-Control": "no-cache"
+    }
+  }
+}

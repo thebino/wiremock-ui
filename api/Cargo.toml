@@ -1,0 +1,23 @@
+[package]
+name = "api"
+description = "Handles the communication via wiremocks Administration REST API."
+version.workspace = true
+authors.workspace = true
+readme.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[lib]
+name = "api"
+path = "src/lib.rs"
+doctest = false
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+tokio.workspace = true
+reqwest = { workspace = true, features = ["json"] }
+
+
+[dev-dependencies]
+httpmock.workspace = true

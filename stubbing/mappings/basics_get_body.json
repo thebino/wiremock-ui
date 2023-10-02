@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/body"
+  },
+  "response": {
+    "status": 200,
+    "body": "Literal text to put in the body"
+  }
+}

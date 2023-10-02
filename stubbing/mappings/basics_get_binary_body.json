@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/binary-body"
+  },
+  "response": {
+    "status": 200,
+    "base64Body": "WUVTIElOREVFRCE="
+  }
+}

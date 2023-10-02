@@ -1,0 +1,12 @@
+[package]
+name = "wiremock"
+description = "Handles the wiremock process."
+version.workspace = true
+authors.workspace = true
+readme.workspace = true
+license.workspace = true
+edition.workspace = true
+
+[dependencies]
+tokio.workspace = true
+tokio-codec = "0.1"

@@ -1,0 +1,12 @@
+ {
+    "scenarioName": "To do list",
+    "requiredScenarioState": "Started",
+    "request": {
+      "method": "GET",
+      "url": "/todo/items"
+    },
+    "response": {
+      "status": 200,
+      "body": "<items><item>Buy milk</item></items>"
+    }
+  }

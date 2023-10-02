@@ -1,0 +1,40 @@
+### swagger doc
+GET 127.0.0.1:7070/__admin/docs/
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### get mappings
+
+GET 127.0.0.1:7070/__admin/mappings
+
+
+### post update
+
+POST 127.0.0.1:7070
+
+Content-Type: application/json
+Cookie: key=first-value
+
+{ "key" : "value", "list": [1, 2, 3] }
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+%}
+
+###
+GET 127.0.0.1:7070/__admin/mappings
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+

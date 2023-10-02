@@ -1,0 +1,17 @@
+{
+  "scenarioName": "To do list",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "Cancel newspaper item added",
+  "request": {
+    "method": "POST",
+    "url": "/"
+  },
+
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {}
+  }
+}

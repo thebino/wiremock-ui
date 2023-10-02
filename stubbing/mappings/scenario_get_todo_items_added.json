@@ -1,0 +1,12 @@
+{
+  "scenarioName": "To do list",
+  "requiredScenarioState": "Cancel newspaper item added",
+  "request": {
+    "method": "GET",
+    "url": "/todo/items"
+  },
+  "response": {
+    "status": 200,
+    "body": "<items><item>Buy milk</item><item>Cancel newspaper subscription</item></items>"
+  }
+}
