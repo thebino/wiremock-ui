@@ -1,0 +1,69 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - '*.md'
+    types: [opened, synchronize, reopened, edited]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - type: Linux
+            os: ubuntu-latest
+            artifact: backup-linux
+            output: target/release/backup
+
+          - type: Windows
+            os: windows-latest
+            artifact: backup-windows
+            output: target/release/backup.exe
+
+          - type: macOS
+            os: macos-latest
+            artifact: backup-macOS
+            output: target/release/backup
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: cargo build --verbose
+
+      - name: Run tests
+        run: cargo test --verbose
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+         name: ${{ matrix.artifact }}
+         path: ${{ matrix.output }}
+
+  artifact:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to Release
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          draft: true
+          files: >
+            linux
+            macOS
+            windows
