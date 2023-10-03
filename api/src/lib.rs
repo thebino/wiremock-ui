@@ -98,7 +98,7 @@ impl API {
         scenario_name: String,
         scenario_state: String,
     ) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-        let uri: String = format!("{}/__admin/scenarios/{scenario_name},state", self.base_url);
+        let uri: String = format!("{}/__admin/scenarios/{scenario_name}/state", self.base_url);
         self.client
             .post(uri)
             .json(&State {

@@ -1,5 +1,5 @@
 {
-  "scenarioName": "To do list",
+  "scenarioName": "to_do_list",
   "requiredScenarioState": "Started",
   "newScenarioState": "Cancel newspaper item added",
   "request": {

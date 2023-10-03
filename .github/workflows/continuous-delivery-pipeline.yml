@@ -57,22 +57,22 @@ jobs:
          name: ${{ matrix.artifact }}
          path: ${{ matrix.output }}
 
-  artifact:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifacts
-        id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
-
-      - name: Upload to Release
-        uses: meeDamian/github-release@2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: Nightly build
-          tag: Nightly
-          allow_override: true
-          files: >
-            ui-linux
-            ui-macOS
-            ui-windows
+#  artifact:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download artifacts
+#        id: download-artifact
+#        uses: dawidd6/action-download-artifact@v2
+#
+#      - name: Upload to Release
+#        uses: meeDamian/github-release@2.0
+#        with:
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          name: Nightly build
+#          tag: Nightly
+#          allow_override: true
+#          files: >
+#            ui-linux
+#            ui-macOS
+#            ui-windows

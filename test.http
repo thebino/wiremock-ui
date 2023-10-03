@@ -1,33 +1,4 @@
-### swagger doc
-GET 127.0.0.1:7070/__admin/docs/
-
-> {%
-    client.test("Request executed successfully", function() {
-        client.assert(response.status === 200, "Response status is not 200");
-    });
-%}
-
 ### get mappings
-
-GET 127.0.0.1:7070/__admin/mappings
-
-
-### post update
-
-POST 127.0.0.1:7070
-
-Content-Type: application/json
-Cookie: key=first-value
-
-{ "key" : "value", "list": [1, 2, 3] }
-
-> {%
-    client.test("Request executed successfully", function() {
-        client.assert(response.status === 201, "Response status is not 201");
-    });
-%}
-
-###
 GET 127.0.0.1:7070/__admin/mappings
 
 > {%
@@ -36,5 +7,35 @@ GET 127.0.0.1:7070/__admin/mappings
     });
 %}
 
-###
+### reset all
+POST 127.0.0.1:7070/__admin/reset
 
+
+### get possible states
+GET 127.0.0.1:7070/__admin/scenarios
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 201");
+        client.assert(response.body.scenarios[0].hasOwnProperty("state"), "Body does not contain head")
+        client.assert(response.body.scenarios[0].state.equals("Started"), "Scenario state does not match 'Started'")
+    });
+%}
+
+### update scenario state
+PUT 127.0.0.1:7070/__admin/scenarios/to_do_list/state
+Content-Type: application/json
+
+{ "state" : "Cancel newspaper item added" }
+
+
+###
+GET 127.0.0.1:7070/__admin/scenarios
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 201");
+        client.assert(response.body.scenarios[0].hasOwnProperty("state"), "Body does not contain head")
+        client.assert(response.body.scenarios[0].state.equals("Cancel newspaper item added"), "Scenario state does not match 'Cancel newspaper item added'")
+    });
+%}
