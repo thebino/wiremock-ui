@@ -69,6 +69,6 @@ jobs:
           tag: Nightly
           allow_override: true
           files: >
-            linux
-            macOS
-            windows
+            ui-linux
+            ui-macOS
+            ui-windows

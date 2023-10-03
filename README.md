@@ -1,5 +1,8 @@
 # WiremockUI
 
+[![License](https://img.shields.io/github/license/thebino/wiremock-ui?style=for-the-badge)](./LICENSE.md)
+[![Build status](https://img.shields.io/github/actions/workflow/status/thebino/wiremock-ui/continuous-delivery-pipeline.yml?style=for-the-badge)](https://github.com/thebino/wiremock-ui/workflows/continuous-delivery-pipeline.yml)
+
 WiremockUI is a Ui application to extend the [WireMock Standalone Process](https://wiremock.org/docs/standalone/java-jar/)
 
 Its features are:
