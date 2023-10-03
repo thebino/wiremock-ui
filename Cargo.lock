@@ -3420,6 +3420,7 @@ dependencies = [
  "api",
  "eframe",
  "rfd",
+ "serde",
  "tokio",
  "wiremock",
 ]

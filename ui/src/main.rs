@@ -13,6 +13,14 @@ struct WiremockApp {
     mock_path: Option<String>,
     output: Vec<String>,
     server_handle: Option<String>,
+    scenarios: Vec<Scenario>,
+}
+
+#[derive(Default)]
+struct Scenario {
+    name: String,
+    selected: String,
+    states: Vec<String>,
 }
 
 impl WiremockApp {
@@ -21,6 +29,11 @@ impl WiremockApp {
             mock_path: None,
             output: vec![],
             server_handle: None,
+            scenarios: vec![Scenario {
+                name: "test".to_string(),
+                selected: "Updated".to_string(),
+                states: vec!["Started".to_string(), "Updated".to_string()],
+            }],
         }
     }
 
@@ -64,12 +77,6 @@ impl WiremockApp {
     }
 }
 
-#[derive(Debug, PartialEq)]
-enum Enum {
-    Started,
-    ServicesTermsAndConditionsNotAccepted,
-}
-
 impl App for WiremockApp {
     fn update(&mut self, ctx: &Context, _frame: &mut Frame) {
         let (tx, rx) = mpsc::channel();
@@ -90,30 +97,26 @@ impl App for WiremockApp {
                             ui.heading("Scenarios");
                         });
                         egui::ScrollArea::vertical().show(ui, |ui| {
-                            // TODO: add each scenario
-                            // text
-                            // vec[option]
-
-                            let mut radio: Enum = Enum::ServicesTermsAndConditionsNotAccepted;
-                            ui.horizontal(|ui| {
-                                ui.label("Scenario 1");
-                                egui::ComboBox::from_label("")
-                                    .selected_text(format!("{radio:?}"))
-                                    .show_ui(ui, |ui| {
-                                        ui.style_mut().wrap = Some(false);
-                                        ui.set_min_width(60.0);
-                                        ui.set_max_width(200.0);
-                                        ui.selectable_value(&mut radio, Enum::Started, "Started");
-                                        ui.selectable_value(
-                                            &mut radio,
-                                            Enum::ServicesTermsAndConditionsNotAccepted,
-                                            format!(
-                                                "{:?}",
-                                                Enum::ServicesTermsAndConditionsNotAccepted
-                                            ),
-                                        );
-                                    });
-                            });
+                            // iterate through scenarios
+                            for scenario in &self.scenarios {
+                                ui.horizontal(|ui| {
+                                    ui.label(&scenario.name.to_string());
+                                    egui::ComboBox::from_label("")
+                                        .selected_text(scenario.selected.clone())
+                                        .show_ui(ui, |ui| {
+                                            ui.style_mut().wrap = Some(false);
+                                            ui.set_min_width(60.0);
+                                            ui.set_max_width(200.0);
+                                            for state in &scenario.states {
+                                                let _ = ui.selectable_label(
+                                                    scenario.selected.eq(state),
+                                                    state,
+                                                );
+                                                // TODO: handle selection
+                                            }
+                                        });
+                                });
+                            }
                         });
                     });
 

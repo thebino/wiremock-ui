@@ -16,3 +16,4 @@ wiremock.workspace = true
 eframe.workspace = true
 tokio.workspace = true
 rfd.workspace = true
+serde = { version = "1.0.188", features = ["derive"] }
