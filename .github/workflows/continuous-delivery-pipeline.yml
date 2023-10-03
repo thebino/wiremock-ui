@@ -61,6 +61,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifacts
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+
       - name: Upload to Release
         uses: meeDamian/github-release@2.0
         with:
