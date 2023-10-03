@@ -65,8 +65,9 @@ jobs:
         uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
-          draft: true
+          name: Nightly build
+          tag: Nightly
+          allow_override: true
           files: >
             linux
             macOS
