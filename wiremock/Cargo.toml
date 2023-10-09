@@ -8,5 +8,8 @@ license.workspace = true
 edition.workspace = true
 
 [dependencies]
+anyhow.workspace = true
+notify.workspace = true
+rand.workspace = true
 tokio.workspace = true
-tokio-codec = "0.1"
+tokio-codec.workspace = true
